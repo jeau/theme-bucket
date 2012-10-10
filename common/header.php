@@ -33,7 +33,7 @@
         </div>
 
         <nav role="navigation">
-            <?php echo custom_public_nav_header(); ?>
+            <?php echo public_nav_main(); ?>
         </nav>
 
     </header>

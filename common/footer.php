@@ -3,7 +3,7 @@
     <footer role="contentinfo">
 
         <nav role="navigation">
-            <?php echo public_nav_main(array(__('Home') => url(''), __('Browse Items') => url('items'), __('Browse Collections') => url('collections'))); ?>
+            <?php echo public_nav_main(); ?>
         </nav>
 
         <div id="footer-text">
