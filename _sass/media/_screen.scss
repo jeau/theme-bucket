@@ -1,0 +1,49 @@
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  color: $default-color;
+}
+
+fieldset {
+  margin:0;
+  padding:0;
+  border:none;
+}
+
+/* Links */
+a {
+
+  &:link {
+    color: $link-color;
+  }
+
+  &:visited {
+    color: $link-color-light;
+  }
+
+  &:hover,
+  &:active {
+    color:$link-color-alternate;
+  }
+
+}
+
+#{headings(1,6)} {
+
+  a {
+    text-decoration:none;
+  }
+
+}
+
+/* Responsive images */
+img {
+  max-width: 100%;
+  width: auto;
+  height: auto;
+}
+
