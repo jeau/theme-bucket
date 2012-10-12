@@ -61,8 +61,14 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     box-sizing: border-box;
   }
 
+  html {
+    font-size: 100%;
+    line-height: 1.75em;
+  }
+
   body {
     color: #3c3c3c;
+    font-family: "Open Sans", Verdana, sans-serif;
   }
 
   fieldset {

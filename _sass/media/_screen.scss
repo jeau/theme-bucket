@@ -4,8 +4,11 @@
   box-sizing: border-box;
 }
 
+@include establish-baseline;
+
 body {
   color: $default-color;
+  font-family: $default-font-family;
 }
 
 fieldset {
