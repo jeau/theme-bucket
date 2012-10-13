@@ -6,8 +6,8 @@
 
 // Compass Variables ---------------------------------------------------------
 
-$base-font-size                 : 16px;
-$base-line-height               : 28px;
+$base-font-size                 : 18px;
+$base-line-height               : 24px;
 
 // Susy Variables -------------------------------------------------------------
 $total-columns: 8;
@@ -20,16 +20,16 @@ $dark-grey        : rgba(0,0,0,0.7);
 $light-grey       : rgba(0,0,0,0.5);
 $lightest-grey    : rgba(0,0,0,0.2);
 
-$default-color                  : rgb(60,60,60);
+$default-color                  : #6d6d6d;
 $default-color-light            : rgba($default-color, 0.75);
 $default-color-lighter          : rgba($default-color, 0.5);
 $default-color-lightest         : rgba($default-color, 0.25);
 
 $highlight-color                : rgb(90,60,110);
 
-$link-color                     : rgb(90,60,110);
+$link-color                     : #333;
 $link-color-light               : lighten($link-color, 10%);
-$link-color-alternate           : rgb(186, 158, 6);
+$link-color-alternate           : #333;
 $link-color-alternate-light     : lighten($link-color-alternate, 10%);
 
 // Fonts

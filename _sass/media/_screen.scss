@@ -2,6 +2,7 @@
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  word-wrap:break-word;
 }
 
 @include establish-baseline;
@@ -9,12 +10,29 @@
 body {
   color: $default-color;
   font-family: $default-font-family;
+  background-color: #fafafa;
+}
+
+form {
+  .field {
+    @include trailer(1);
+  }
 }
 
 fieldset {
   margin:0;
   padding:0;
   border:none;
+}
+
+input {
+  padding: rhythm(0.5);
+  font-family: $default-font-family;
+  color: $default-color;
+  &[type=text],
+  &[type=search] {
+    border:1px solid $default-color-lightest;
+  }
 }
 
 /* Links */
@@ -35,12 +53,47 @@ a {
 
 }
 
+h1 {
+  @include adjust-font-size-to(36px);
+  @include adjust-leading-to(0.875);
+  font-weight:bold;
+}
+
+h2 {
+  @include adjust-font-size-to(24px);
+  font-weight:bold;
+}
+
+h3 {
+  font-weight:bold;
+  color: $default-color-light;
+  @include adjust-font-size-to(20px);
+  @include adjust-leading-to(1.5);
+}
+
+h4 {
+  font-weight:bold;
+}
+
+h5 {
+  font-style:italic;
+}
+
+h6 {
+  font-style:italic;
+  color: $default-color-lighter;
+}
+
 #{headings(1,6)} {
 
   a {
     text-decoration:none;
   }
 
+}
+
+#{headings(2,3)} {
+  @include leader(1);
 }
 
 /* Responsive images */
@@ -50,3 +103,56 @@ img {
   height: auto;
 }
 
+/* Header */
+header[role=banner] {
+  padding:rhythm(1);
+  background-color: #a3a3a3;
+}
+
+#search-container {
+  a {
+    @include adjust-font-size-to(12px);
+    text-decoration:none;
+  }
+}
+
+#simple-search {
+  * {
+    margin:0;
+  }
+
+  position:relative;
+  width: 200px;
+
+  input {
+    &[type=text] {
+      width:200px;
+    }
+    &[type=submit] {
+      position:absolute;
+      background-color: transparent;
+      top: 50%;
+      right: 0.25em;
+      margin-top:-1em;
+      content: "";
+      text-indent: -9999px;
+      background-image:url("../images/search-icon.png");
+      background-position: 50% 50%;
+      background-repeat:no-repeat;
+      background-size: 80% 80%;
+      width: 2em;
+      height: 2em;
+      line-height:0;
+      border:none;
+      cursor:pointer;
+    }
+  }
+}
+
+div[role="main"] {
+  padding:rhythm(1);
+}
+
+footer[role=contentinfo] {
+  @include adjust-font-size-to(14px);
+}
