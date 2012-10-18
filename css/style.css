@@ -62,6 +62,22 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     word-wrap: break-word;
   }
 
+  @font-face {
+    font-family: 'MenschBoldInline';
+    src: url("../fonts/mensch-inline-wf.eot");
+    src: url("../fonts/mensch-inline-wf.eot?#iefix") format("embedded-opentype"), url("../fonts/mensch-inline-wf.woff") format("woff"), url("../fonts/mensch-inline-wf.ttf") format("truetype"), url("../fonts/mensch-inline-wf.svg#MenschMenschBoldInline") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+  @font-face {
+    font-family: 'icomoon';
+    src: url("../fonts/icomoon.eot");
+    src: url("../fonts/icomoon.eot?#iefix") format("embedded-opentype"), url("../fonts/icomoon.svg#icomoon") format("svg"), url("../fonts/icomoon.woff") format("woff"), url("../fonts/icomoon.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
   html {
     font-size: 112.5%;
     line-height: 1.33333em;
@@ -70,7 +86,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   body {
     color: #6d6d6d;
     font-family: "Open Sans", Verdana, sans-serif;
-    background-color: #fafafa;
+    background: url("../images/content-bg.png") #eeeeee;
   }
 
   form .field {
@@ -93,14 +109,17 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   }
 
   /* Links */
+  a {
+    text-decoration: none;
+  }
   a:link {
-    color: #333333;
+    color: #e53c3c;
   }
   a:visited {
-    color: #4d4d4d;
+    color: #eb6969;
   }
   a:hover, a:active {
-    color: #333333;
+    color: #42c2f7;
   }
 
   h1 {
@@ -113,7 +132,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   h2 {
     font-size: 1.33333em;
     line-height: 2em;
-    font-weight: bold;
+    font-family: "Economica", sans-serif;
   }
 
   h3 {
@@ -153,11 +172,32 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   }
 
   /* Header */
-  header[role=banner] {
-    padding: 1.33333em;
-    background-color: #a3a3a3;
+  header {
+    background: url("../images/bg.png") #b30000;
   }
 
+  #site-title {
+    padding: 0 0.42667em;
+  }
+
+  #site-title {
+    font-family: 'MenschBoldInline';
+    font-size: 50px;
+    font-weight: normal;
+    padding: 0.66667em 1.33333em 0 1.33333em;
+    text-align: center;
+  }
+  #site-title a {
+    color: #f8f8f8;
+  }
+
+  #search-container {
+    padding: 1.33333em;
+    display: block;
+    width: 100%;
+    overflow: auto;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  }
   #search-container a {
     font-size: 0.66667em;
     line-height: 2em;
@@ -165,14 +205,23 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   }
 
   #simple-search {
+    float: left;
     position: relative;
-    width: 200px;
+    width: 89%;
+    margin-right: 1%;
   }
   #simple-search * {
     margin: 0;
   }
   #simple-search input[type=text] {
-    width: 200px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 2px;
+    color: #f8f8f8;
+    border: 0;
+    height: 30px;
+    line-height: 25px;
+    font-size: 16px;
   }
   #simple-search input[type=submit] {
     position: absolute;
@@ -182,7 +231,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     margin-top: -1em;
     content: "";
     text-indent: -9999px;
-    background-image: url("../images/search-icon.png");
     background-position: 50% 50%;
     background-repeat: no-repeat;
     background-size: 80% 80%;
@@ -193,11 +241,157 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     cursor: pointer;
   }
 
-  div[role="main"] {
+  a#advanced-search-link {
+    width: 10%;
+    height: 30px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 2px;
+    color: #f8f8f8;
+    font-size: 16px;
+    text-indent: -9999px;
+    display: inline-block;
+    float: left;
+    line-height: 30px;
+    padding: 0;
+  }
+  a#advanced-search-link:after {
+    content: "\22";
+    font-family: "icomoon";
+    color: #f8f8f8;
+    display: block;
+    text-indent: 0;
+    text-align: center;
+    line-height: 30px;
+    margin-top: -1.8125em;
+    padding: 0;
+  }
+
+  #top-nav {
+    background: url("../images/bg.png") #1784a4;
+    display: block;
+    clear: both;
+    padding: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.09);
+    text-align: center;
+    font-family: 'Economica', sans-serif;
+    font-size: 1.16667em;
+    line-height: 2.28571em;
+  }
+  #top-nav ul {
+    padding: 0;
+  }
+  #top-nav li {
+    border-top: 1px solid rgba(255, 255, 255, 0.09);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    padding: 0.16667em;
+  }
+  #top-nav a {
+    color: #f8f8f8;
+    letter-spacing: 1px;
+    text-decoration: none;
+  }
+
+  #home #intro {
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    margin: 0;
     padding: 1.33333em;
   }
 
+  #home div[role="main"] aside, #home div[role="main"] div {
+    margin: 1.33333em;
+  }
+
+  div[role="main"] {
+    border-top: 1px solid #fff;
+  }
+
+  #featured-item {
+    background-color: #fff;
+    box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.15);
+  }
+  #featured-item h2, #featured-item h3 {
+    width: 57%;
+    float: right;
+  }
+  #featured-item h2 {
+    font-size: 1em;
+    line-height: 1.33333em;
+    margin: 0.33333em 2.5% 0.33333em 0;
+  }
+  #featured-item h3 {
+    font-size: 0.66667em;
+    line-height: 2em;
+    line-height: 1.5em;
+    font-weight: normal;
+    margin: 0 2.5% 0 0;
+  }
+  #featured-item a {
+    color: #42c2f7;
+    font-weight: bold;
+    vertical-align: bottom;
+  }
+  #featured-item a img {
+    width: 35%;
+    vertical-align: bottom;
+  }
+  #featured-item .item-description {
+    display: none;
+  }
+
+  #featured-collection, #featured-exhibit {
+    background-color: #606060;
+    box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.75);
+    color: #f8f8f8;
+    margin: 1.33333em 0;
+    padding: 5%;
+  }
+  #featured-collection h2, #featured-collection h3, #featured-exhibit h2, #featured-exhibit h3 {
+    font-size: 1em;
+    line-height: 1.33333em;
+    line-height: 1.33333em;
+    margin: 0;
+  }
+  #featured-collection a, #featured-exhibit a {
+    color: #42c2f7;
+  }
+  #featured-collection .collection-description, #featured-exhibit .collection-description {
+    display: none;
+  }
+
+  #home #recent-items {
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
+    padding: 0;
+    margin: 0;
+  }
+  #home #recent-items .items-list {
+    margin: 0;
+  }
+  #home #recent-items h2, #home #recent-items .item, #home #recent-items .view-items-link {
+    margin: 0;
+    padding: 0.66667em 1.33333em;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  }
+  #home #recent-items h3, #home #recent-items .item-description {
+    margin: 0;
+    font-size: 0.88889em;
+    line-height: 1.5em;
+  }
+  #home #recent-items div {
+    margin: 0;
+  }
+  #home #recent-items .item {
+    clear: both;
+    overflow: auto;
+  }
+  #home #recent-items .item img {
+    width: 30%;
+    float: left;
+    margin: 0 2% 2% 0;
+  }
+
   footer[role=contentinfo] {
+    padding: 1.66667em;
     font-size: 0.77778em;
     line-height: 1.71429em;
   }

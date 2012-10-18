@@ -27,10 +27,13 @@ $default-color-lightest         : rgba($default-color, 0.25);
 
 $highlight-color                : rgb(90,60,110);
 
-$link-color                     : #333;
+$link-color                     : #e53c3c;
 $link-color-light               : lighten($link-color, 10%);
-$link-color-alternate           : #333;
+$link-color-alternate           : #42c2f7;
 $link-color-alternate-light     : lighten($link-color-alternate, 10%);
+
+$border-shadow                  : rgba(0, 0, 0, .15);
+$border-highlight               : rgba(255, 255, 255, .09);
 
 // Fonts
 $default-font-family: "Open Sans", Verdana, sans-serif;

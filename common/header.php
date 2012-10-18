@@ -25,14 +25,13 @@
 
         <?php fire_plugin_hook('public_page_header'); ?>
 
-        <h1 id="site-title"><?php echo link_to_home_page(custom_display_logo()); ?></h1>
+        <h1 id="site-title"><?php echo link_to_home_page(theme_logo()); ?></h1>
 
         <div id="search-container">
-        <?php echo simple_search_form(); ?>
-        <?php echo link_to_item_search(); ?>
+            <?php echo search_form(); ?>
         </div>
 
-        <nav role="navigation">
+        <nav id="top-nav">
             <?php echo public_nav_main(); ?>
         </nav>
 
