@@ -1,15 +1,11 @@
-* {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  word-wrap:break-word;
-}
 
 @include establish-baseline;
 
 body {
   color: $default-color;
   font-family: $default-font-family;
+  font-size: $base-font-size;
+  line-height: $base-line-height;
   background: url('../images/content-bg.png') #eee;
 }
 
@@ -108,19 +104,20 @@ img {
 /* Header */
 header {
   background: url('../images/bg.png') #b30000;
-}
-
-#site-title {
-  padding: 0 rhythm(.32);
+  overflow: auto;
 }
 
 #site-title {
   font-family: 'MenschBoldInline';
   font-size: 50px; 
   font-weight: normal;
-  padding:rhythm(.5) rhythm(1) 0 rhythm(1);
+  padding: rhythm(.5) 10px;
   text-align: center;
-  a { color: #f8f8f8; }
+  a { 
+      color: #f8f8f8; 
+      display: inline-block;
+      width: 100%;
+  }
 }
 
 #search-container {
@@ -128,7 +125,7 @@ header {
   display: block;
   width: 100%;
   overflow: auto;
-  border-bottom: 1px solid $border-shadow;
+  text-align: center;
   a {
   @include adjust-font-size-to(12px);
   text-decoration:none;
@@ -188,32 +185,54 @@ a#advanced-search-link {
   float: left;
   line-height: 30px;
   padding: 0;
-  &:after {
-    content: "\22";
-    font-family: "icomoon";
-    color: #f8f8f8;
-    display: block;
-    text-indent: 0;
-    text-align: center;
-    line-height: 30px;
-    margin-top: -1.8125em;
-    padding: 0;
-  }
+}
+
+.icon-search { 
+    font-size: 24px;
+    line-height: 32px;
+    
+    span:first-of-type { left: 10px;}
+}
+
+.icon-menu { 
+    font-size: 32px;
+    vertical-align: top;
+    
+    span:first-of-type { left: 7px;}
 }
 
 #top-nav {
-  background: url('../images/bg.png') #1784a4;
   display: block;
   clear: both;
   padding: 0;
-  border-top: 1px solid rgba(255,255,255,.09);
-  text-align: center;
-  font-family: 'Economica', sans-serif;
-  @include adjust-font-size-to(21px);
-  ul { padding: 0; }
+  
+  & > * {
+    background: url('../images/bg.png') #000;
+  }
+  
+  & > a { 
+      height: 25px;
+      display: inline-block;
+      padding: 10px;
+      width: 25px;
+      overflow: hidden;
+      float: right;
+      margin-right: 10px;
+      position: relative;
+      
+      span { 
+          position: absolute;
+          top: 8px;
+      }
+  }
+    
+  ul { 
+    padding: 0; 
+    text-align: center;
+    font-family: 'Economica', sans-serif;
+  }
+
   li {
-    border-top: 1px solid rgba(255,255,255,.09);
-    border-bottom: 1px solid $border-shadow;
     padding: rhythm(.125);
   }
   a { 

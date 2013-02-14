@@ -1,29 +1,5 @@
 @import "base";
 
-@include font-face(
-  'MenschBoldInline',
-  font-files(
-    'mensch-inline-wf.woff', woff,
-    'mensch-inline-wf.ttf', truetype,
-    'mensch-inline-wf.svg#MenschMenschBoldInline', svg
-  ),
-  'mensch-inline-wf.eot',
-  'normal',
-  'normal'
-);
-
-@include font-face(
-  'icomoon',
-  font-files(
-    'icomoon.woff', woff,
-    'icomoon.ttf', truetype,
-    'icomoon.svg#icomoon', svg
-  ),
-  'icomoon.eot',
-  'normal',
-  'normal'
-);
-
 // screen --------------------------------------------------------------------
 @media screen {
   @import "media/screen";

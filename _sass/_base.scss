@@ -35,5 +35,46 @@ $link-color-alternate-light     : lighten($link-color-alternate, 10%);
 $border-shadow                  : rgba(0, 0, 0, .15);
 $border-highlight               : rgba(255, 255, 255, .09);
 
-// Fonts
+// Fonts ---------------------------------------------------------------------
 $default-font-family: "Open Sans", Verdana, sans-serif;
+
+@include font-face(
+  'MenschBoldInline',
+  font-files(
+    'mensch-inline-wf.woff', woff,
+    'mensch-inline-wf.ttf', truetype,
+    'mensch-inline-wf.svg#MenschMenschBoldInline', svg
+  ),
+  'mensch-inline-wf.eot',
+  'normal',
+  'normal'
+);
+
+@include font-face(
+  'entypo',
+  font-files(
+    'entypo.woff', woff,
+    'entypo.ttf', truetype,
+    'entypo.svg#entypo', svg
+  ),
+  'entypo.eot',
+  'normal',
+  'normal'
+);
+
+[data-icon]:before {
+  font-family: 'entypo';
+  content: attr(data-icon);
+  speak: none;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+}
+
+.screen-reader-text {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
