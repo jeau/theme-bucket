@@ -20,6 +20,8 @@ $dark-grey        : rgba(0,0,0,0.7);
 $light-grey       : rgba(0,0,0,0.5);
 $lightest-grey    : rgba(0,0,0,0.2);
 
+$yellow                         : #FFE76B;
+
 $default-color                  : #6d6d6d;
 $default-color-light            : rgba($default-color, 0.75);
 $default-color-lighter          : rgba($default-color, 0.5);
@@ -37,18 +39,6 @@ $border-highlight               : rgba(255, 255, 255, .09);
 
 // Fonts ---------------------------------------------------------------------
 $default-font-family: "Open Sans", Verdana, sans-serif;
-
-@include font-face(
-  'MenschBoldInline',
-  font-files(
-    'mensch-inline-wf.woff', woff,
-    'mensch-inline-wf.ttf', truetype,
-    'mensch-inline-wf.svg#MenschMenschBoldInline', svg
-  ),
-  'mensch-inline-wf.eot',
-  'normal',
-  'normal'
-);
 
 @include font-face(
   'entypo',

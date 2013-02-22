@@ -1,5 +1,6 @@
-
 @include establish-baseline;
+
+* { @include box-sizing(border-box); }
 
 body {
   color: $default-color;
@@ -58,15 +59,15 @@ h1 {
 }
 
 h2 {
-  @include adjust-font-size-to(24px);
+  @include adjust-font-size-to(27px);  
   font-family: "Economica", sans-serif;
 }
 
 h3 {
   font-weight:bold;
   color: $default-color-light;
-  @include adjust-font-size-to(20px);
-  @include adjust-leading-to(1.5);
+  font-size: 1 * $base-font-size;
+  line-height: $base-line-height;
 }
 
 h4 {
@@ -108,8 +109,9 @@ header {
 }
 
 #site-title {
-  font-family: 'MenschBoldInline';
-  font-size: 50px; 
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 2 * $base-font-size; 
+  line-height: 2 * $base-line-height;
   font-weight: normal;
   padding: rhythm(.5) 10px;
   text-align: center;
@@ -121,55 +123,34 @@ header {
 }
 
 #search-container {
-  padding: rhythm(1);
   display: block;
   width: 100%;
   overflow: auto;
   text-align: center;
-  a {
-  @include adjust-font-size-to(12px);
-  text-decoration:none;
-  }
-}
-
-#simple-search {
-  * {
-  margin:0;
-  }
-
-  float: left;
-  position:relative;
-  width: 89%;
-  margin-right: 1%;
-
-  input {
-  &[type=text] {
-    width:100%;
-    background-color: rgba(0,0,0,.2);
-    border-radius: 2px;
-    color: #f8f8f8;
+  padding: rhythm(.75) rhythm(1);
+  
+  input[type=text] {
     border: 0;
-    height: 30px;
-    line-height: 25px;
-    font-size: 16px;
+    font-size: $base-font-size;
+    line-height: $base-line-height;
+    display: inline-block;
+    padding: rhythm(.25);
+    float: left;
+    width: 75%;
+    margin: 0;
+    vertical-align: top;
   }
-  &[type=submit] {
-    position:absolute;
-    background-color: transparent;
-    top: 50%;
-    right: 0.25em;
-    margin-top:-1em;
-    content: "";
-    text-indent: -9999px;
-    background-position: 50% 50%;
-    background-repeat:no-repeat;
-    background-size: 80% 80%;
-    width: 2em;
-    height: 2em;
-    line-height:0;
-    border:none;
-    cursor:pointer;
-  }
+  
+  input[type=submit] {
+    padding: rhythm(.25);
+    line-height: $base-line-height;
+    border: 0;
+    font-size: 1em;
+    float: left;
+    width: 25%;
+    background-color: $yellow;
+    margin: 0;
+    vertical-align: top;
   }
 }
 
@@ -187,54 +168,73 @@ a#advanced-search-link {
   padding: 0;
 }
 
-.icon-search { 
-    font-size: 24px;
-    line-height: 32px;
-    
-    span:first-of-type { left: 10px;}
-}
-
-.icon-menu { 
-    font-size: 32px;
-    vertical-align: top;
-    
-    span:first-of-type { left: 7px;}
-}
-
 #top-nav {
   display: block;
   clear: both;
-  padding: 0;
-  
-  & > * {
-    background: url('../images/bg.png') #000;
-  }
-  
+  background: #2d2d2d;
+  overflow: auto;
+
   & > a { 
-      height: 25px;
+      height: 16px;
       display: inline-block;
-      padding: 10px;
+      padding: 10px 5px;
       width: 25px;
       overflow: hidden;
       float: right;
-      margin-right: 10px;
       position: relative;
+      margin: rhythm(.125) 0;
+      @include box-sizing(content-box);
       
       span { 
           position: absolute;
-          top: 8px;
+          top: 3px;
       }
   }
-    
-  ul { 
-    padding: 0; 
-    text-align: center;
-    font-family: 'Economica', sans-serif;
+
+  .icon-search { 
+      font-size: 24px;
+      line-height: 32px;
+      margin-right: rhythm(1);
+      
+      [data-icon] { left: 10px;}
+  }
+  
+  .icon-menu { 
+      font-size: 32px;
+      vertical-align: top;
+      
+      [data-icon] { left: 7px;}
   }
 
+  #menu-container > ul { 
+    clear: both;     padding: 0; 
+    text-align: left;
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: 200;
+    text-transform: uppercase;
+
+    & > li > a { 
+        color: $link-color-alternate; 
+    }
+
+    ul { 
+        text-transform:capitalize;
+        padding-left: rhythm(1);
+                
+        a { padding-left: rhythm(1); }
+    }
+  } 
+   
   li {
-    padding: rhythm(.125);
+    padding: 0;
+    
+    a { 
+        padding: rhythm(.5) rhythm(1);
+        display: inline-block;
+        width: 100%;
+    }
   }
+  
   a { 
     color: #f8f8f8;
     letter-spacing: 1px;;
@@ -244,87 +244,106 @@ a#advanced-search-link {
 
 #home #intro {
   text-align: center;
-  border-bottom: 1px solid $border-shadow;
   margin: 0;
   padding: rhythm(1);
 }
 
-#home div[role="main"] {
-  aside, div { margin:rhythm(1); }
-}
-
-div[role="main"] {
-  border-top: 1px solid #fff;
-}
-
 #featured-item {
-  background-color: #fff;
-  box-shadow: 1px 1px 0 rgba(0,0,0,.15);
-  h2, h3 { 
-    width: 57%; 
-    float: right; 
-  }
+  background-color: #606060;
+  background-size: cover;
+  background-position: center center;
+  display: block;
+  overflow: auto;
+  
+  * { color: #fff; }
+  
   h2 { 
-    @include adjust-font-size-to(18px); 
-    margin: rhythm(.25) 2.5% rhythm(.25) 0;
+      margin: 0;
+      @include adjust-font-size-to(27px); 
   }
-  h3 { 
-    @include adjust-font-size-to(12px);
-    @include adjust-leading-to(.75,12px);
-    font-weight: normal;
-    margin: 0 2.5% 0 0;
-  }
+  
+  h3 { margin: 0; }
+  
   a {
-    color: #42c2f7;
+    color: #fff;
     font-weight: bold;
     vertical-align: bottom;
     img { width: 35%; vertical-align: bottom; }
   }
   .item-description { display: none; }
+  
+  .shadow { padding: rhythm(2) rhythm(1); }
+}
+
+.shadow {
+    background-image: url('../images/gradient.png');
+    background-size: contain;
+    width: 100%;
+    overflow: auto;
 }
 
 #featured-collection, #featured-exhibit {
-  background-color: #606060;
-  box-shadow: 1px 1px 0 rgba(0,0,0,.75);
+  background-color: #2d2d2d;
   color: #f8f8f8;
-  margin: rhythm(1) 0;
-  padding: 5%;
-  h2, h3 { 
-    @include adjust-font-size-to(18px);
-    @include adjust-leading-to(1);
-    margin: 0; 
+  border-color: $border-shadow;
+  padding: rhythm(1);
+  @include trailing-border(1px, 1, $base-font-size, solid);
+
+  h2 { 
+    @include adjust-font-size-to(27px);
+    margin: 0;
   }
-  a { color: #42c2f7; }
+
+  h3, p { 
+      margin: 0;
+      line-height: 2 * $base-line-height;
+  }
+
+  a { color: #fff; }
+
   .collection-description { display: none; }
 }
 
 #home #recent-items {
-  border-top: 1px solid $border-shadow;
-  padding: 0;
+  padding: 0 rhythm(1);
   margin: 0;
+  
   .items-list { margin: 0; }
-  h2, .item, .view-items-link { 
+  
+  h2, .view-items-link { 
     margin: 0;
-    padding: rhythm(.5) rhythm(1); 
-    border-bottom: 1px solid $border-shadow;
+    padding: rhythm() 0; 
   }
+  
   h3, .item-description {
     margin: 0;
     @include adjust-font-size-to(16px);
   }
+
   div { 
     margin: 0; 
   }
+  
   .item {
     clear: both;
     overflow: auto;
+    padding: 0;
+    border-color: $border-shadow;
+    @include trailing-border(1px,1,$base-font-size, solid);
+    
+    &:not(:first-of-type) { @include padding-leader(1); }
+
     img { 
-      width: 30%;
+      width: 120px;
+      height: auto;
       float: left;
-      margin: 0 2% 2% 0;
+      margin: 0 rhythm(1) rhythm(1) 0;
     }
+
   }
 }
+
+footer nav { display: none; }
 
 footer[role=contentinfo] {
   padding:rhythm(1.25);
