@@ -64,7 +64,7 @@
 
     <?php endif; ?>
 
-    <p class="view-items-link"><a href="<?php echo html_escape(url('items')); ?>"><?php echo __('View All Items'); ?></a></p>
+    <p class="view-items-link"><a href="<?php echo html_escape(url('items')); ?>" class="button"><?php echo __('View All Items'); ?></a></p>
 
 </div><!--end recent-items -->
 
