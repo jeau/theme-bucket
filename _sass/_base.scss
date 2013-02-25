@@ -34,8 +34,8 @@ $link-color-light               : lighten($link-color, 10%);
 $link-color-alternate           : #42c2f7;
 $link-color-alternate-light     : lighten($link-color-alternate, 10%);
 
-$border-shadow                  : rgba(0, 0, 0, .15);
-$border-highlight               : rgba(255, 255, 255, .09);
+$border-shadow                  : #3d3d3d;
+$border-highlight               : #ccc;
 
 // Fonts ---------------------------------------------------------------------
 $default-font-family: "Open Sans", Verdana, sans-serif;
