@@ -15,6 +15,7 @@
     queue_css_file('style');
     queue_css_file('ie', 'css', array('conditional' => '(gte IE 6)&(lte IE 8)'));
     queue_css_url('http://fonts.googleapis.com/css?family=Titillium+Web:400,400italic,700,700italic,200,200italic');
+    queue_css_url('http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700,700italic');
     echo head_css(); 
     ?>
 

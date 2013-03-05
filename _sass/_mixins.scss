@@ -145,3 +145,16 @@
   }
 }
 
+@mixin button {
+  background-color: $yellow;
+  cursor: pointer;
+  color: $link-color;
+  display: block;
+  padding: rhythm(.25) rhythm(.5);
+  margin: rhythm(1) 0;
+  text-align: center;
+  border: 0;
+  @include adjust-font-size-to(14px);
+  font-family: "PT Sans", sans-serif;
+  @include border-radius(6px);
+}

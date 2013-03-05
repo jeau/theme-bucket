@@ -12,7 +12,7 @@ if (!Omeka) {
                 e.preventDefault();
                 var hook = $(this).attr('href');
                 hook = hook.replace('#','');
-                $('#' + hook + '-container').toggle();
+                $('#' + hook + '-container').slideToggle();
             });
         });
     }

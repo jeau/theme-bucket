@@ -8,21 +8,33 @@
 body {
   color: $default-color;
   font-family: $default-font-family;
-  font-size: $base-font-size;
-  line-height: $base-line-height;
   background: url('../images/content-bg.png') #eee;
 }
 
 form {
   .field {
-  @include trailer(1);
+    overflow: auto;
+    clear: both;
+    @include leader();
+    @include trailer();
   }
+}
+
+label, .label {
+  display: inline-block;
+  @include trailer(.5);
 }
 
 fieldset {
   margin:0;
   padding:0;
   border:none;
+}
+
+select { 
+  max-width: 100%; 
+  display: inline-block;
+  margin: 0 0 rhythm() 0;
 }
 
 input {
@@ -32,7 +44,19 @@ input {
   &[type=text],
   &[type=search] {
   border:1px solid $default-color-lightest;
+  height: 3em;
+  width: 100%;
   }
+}
+
+.inputs { vertical-align: bottom; }
+
+input[type=submit], button {
+  @include button;
+}
+
+th, td {
+  vertical-align: top;
 }
 
 /* Links */
@@ -64,38 +88,78 @@ a {
   @include border-radius(6px);
 }
 
+/* -- Table -- */
+
+table { @include leader(); }
+
+th { font-weight: bold; }
+
+td, th {
+  border-color: $border-highlight;
+  @include leading-border(1px, .5, $base-font-size, solid);
+  padding-left: rhythm(.5);
+  padding-right: rhythm(.5);
+  @include padding-trailer(.5);
+}
+
+tr:last-of-type td {
+  border-color: $border-highlight;
+  @include trailing-border(1px, .5, $base-font-size, solid);
+}
+
+
 .pagination {
   display: inline-block;
+  width: 100%;
   overflow: auto;
-  @include leader();
-  @include trailer();
-  @include adjust-font-size-to(14px);
-
-  li { float: left; }
+  margin: rhythm(.5) 0;
+  vertical-align: bottom;
+  list-style-type: none;
+  padding-left: 0;
+  li { 
+    float: left; 
+    @include adjust-font-size-to(12px);
+  }
   
   .button { 
     float: left;
     margin: 0;
   }
+  
+  &:empty {
+    margin: 0;
+    padding: 0;
+  }
 }
 
-.pagination_previous .button { @include border-radius(3px 0px 0px 3px); }
+.item + .pagination {
+    border-color: $border-highlight;
+    @include leading-border(1px, 1, $base-font-size, solid);
+}
 
-.pagination_next .button { @include border-radius(0px 3px 3px 0px); }
+.pagination_previous a, .pagination_next a { 
+    @include adjust-leading-to(.5, $base-line-height); 
+    @include border-radius(0px);
+}
+
+.pagination > *:first-child a, .pagination > *:first-child  { @include border-radius(3px 0px 0px 3px); }
+
+.pagination > *:last-child a { @include border-radius(0px 3px 3px 0px); }
 
 .page-input { 
   background-color: #f7f7f7; 
-  padding: rhythm(.5) 0;
-  width: 50%;
   text-align: center;
+  padding: 0 rhythm();
   
   input[type=text] { 
     background-color: #f7f7f7; 
     border: 0; 
     margin: 0;
     padding: 0;
-    @include adjust-font-size-to(18px);
-    width: 25%;
+    height: auto;
+    @include adjust-font-size-to(16px);
+    @include adjust-leading-to(.5); 
+    width: 50px;
     text-align: center;
     border-color: #ccc;
     @include trailing-border(2px, 0, $base-font-size, dotted);
@@ -103,19 +167,20 @@ a {
 }
 
 h1 {
-  @include adjust-font-size-to(27px);
-  line-height: 2 * $base-line-height;
+  @include adjust-font-size-to(24px);
+  line-height: $base-line-height;
   font-weight:bold;
 }
 
 h2 {
-  @include adjust-font-size-to(22.5px);  
-  line-height: 2 * $base-line-height;
+  @include adjust-font-size-to(20px);  
+  line-height: $base-line-height;
   margin: $base-line-height 0;
   font-family: 'Titillium Web', sans-serif;
 }
 
 h3 {
+  @include adjust-font-size-to(18px);
   line-height: $base-line-height;
   margin-bottom: $base-line-height;
   font-weight:bold;
@@ -136,6 +201,13 @@ h6 {
   color: $default-color-lighter;
 }
 
+p { @include trailer(); }
+
+ul {
+    padding-left: rhythm();
+    list-style-type: disc;
+}
+
 a { text-decoration:none; }
 
 /* Responsive images */
@@ -153,8 +225,8 @@ header {
 
 #site-title {
   font-family: 'Titillium Web', sans-serif;
-  font-size: 2 * $base-font-size; 
-  line-height: 2 * $base-line-height;
+  font-size: 1.5 * $base-font-size; 
+  line-height: $base-line-height;
   font-weight: normal;
   padding: $base-line-height;
   text-align: center;
@@ -170,7 +242,9 @@ header {
   width: 100%;
   overflow: auto;
   text-align: center;
-  padding: rhythm(.75) rhythm(1);
+  padding: 0 rhythm(1) rhythm(.75) rhythm(1);
+  border-color: $border-shadow;
+  @include leading-border(1px, .75, $base-font-size, solid);
   
   input {
     @include border-radius(0px);
@@ -183,6 +257,7 @@ header {
     line-height: $base-line-height;
     display: inline-block;
     padding: rhythm(.25);
+    height: rhythm(1.5);
     float: left;
     width: 65%;
     margin: 0;
@@ -246,7 +321,10 @@ a#advanced-search-link {
       line-height: 32px;
       margin-right: rhythm(1);
       
-      [data-icon] { left: 10px;}
+      [data-icon] { 
+        top: 6px;
+        left: 10px;
+      }
   }
   
   .icon-menu { 
@@ -255,13 +333,17 @@ a#advanced-search-link {
       
       [data-icon] { left: 7px;}
   }
+  
+  #menu-container { clear: both; }
 
   #menu-container > ul { 
-    clear: both;     padding: 0; 
+    clear: both;
+    padding: 0; 
     text-align: left;
     font-family: 'Titillium Web', sans-serif;
     font-weight: 200;
     text-transform: uppercase;
+    list-style-type: none;
 
     & > li > a { 
         color: $link-color-alternate; 
@@ -270,10 +352,17 @@ a#advanced-search-link {
     ul { 
         text-transform:capitalize;
         padding-left: rhythm(1);
+        list-style-type: none;
                 
         a { padding-left: rhythm(1); }
     }
   } 
+  
+  .navigation > li:first-of-type > a {
+    padding-top: 0;
+    border-color: $border-shadow;
+    @include leading-border(1px, .5, $base-font-size, solid);
+  }
    
   li {
     padding: 0;
@@ -296,6 +385,8 @@ a#advanced-search-link {
   text-align: center;
   margin: 0;
   padding: 0 0 rhythm(1) 0;
+  
+  p:only-of-type { margin-bottom: 0; }
 }
 
 #featured-item {
@@ -360,12 +451,11 @@ a#advanced-search-link {
   .items-list { margin: 0; }
   
   h2 { 
-    margin: 0;
-    padding: rhythm(1) 0; 
+    margin: $base-line-height 0;
   }
   
   h3, .item-description {
-    margin: 0;
+    margin: 0 0 $base-line-height 0;
     @include adjust-font-size-to(16px);
   }
 
@@ -378,23 +468,34 @@ a#advanced-search-link {
     overflow: auto;
     padding: 0;
     border-color: $border-highlight;
-    @include padding-leader(1);
-    @include trailing-border(1px,1,$base-font-size, solid);
+    @include leading-border(1px,1,$base-font-size, solid);
 
     img { 
       width: 120px;
       height: auto;
       float: left;
-      margin: 0 rhythm(1) rhythm(1) 0;
-    }
+      margin: 0 rhythm(1) 0 0;
+    }  
+  }
 
-  &:first-child { @include padding-leader(0); }
+  .view-items-link {
+    border-color: $border-highlight;
+    @include leading-border(1px,1,$base-font-size, solid);
+  }
   
+  .view-items-link a {
+    margin-top: 0;
   }
 }
 
 [role="main"] {
   padding: rhythm(1);
+  
+  h1 { 
+    @include adjust-font-size-to(24px); 
+    @include adjust-leading-to(1, 24px);
+    @include trailer(.5, 24px);
+  }
 }
 
 .element {
@@ -413,40 +514,136 @@ a#advanced-search-link {
 .collection {
     border-color: $border-highlight;
     @include trailing-border(1px, 1, $base-font-size, solid);
+    
+    .view-items-link { margin-bottom: 0; }
 }
 
-.items-nav {
+.collection:last-of-type { @include trailing-border(0px, 1, $base-font-size, solid); }
+
+.items.browse {
+  
+  h2 {
+    @include adjust-font-size-to(18px);
+    line-height: $base-line-height;
+    margin: 0 0 (.5 * $base-line-height) 0;
+  }
+  
+  .item {
+    border-color: $border-highlight;
+    overflow: auto;
+    @include leading-border(1px, 1, $base-font-size, solid);
+    
+  }
+  
+  .item-meta {
+    overflow: auto;
+
+    & > div { margin-bottom: $base-line-height; }
+
+    .item-img { margin-bottom: 0; }
+  }
+  
+}
+
+.item-img {
+  float: left;
+
+  a { 
+    width: rhythm(5);
+    margin: 0 rhythm(1) rhythm(1) 0;
+    display: inline-block; 
+    vertical-align: bottom;
+  }
+
+  img {
+    width: rhythm(5);
+    height: auto;
+    vertical-align: bottom;
+  }
+}
+
+.items-nav, .exhibits #secondary-nav {
+  background-color: #dfdfdf; 
+  @include border-radius(3px);
+  padding-left: 10px;
   @include adjust-font-size-to(14px);
   @include leader();
   @include trailer();
   float: left;
   width: 100%;
-  background-color: #f7f7f7;
   margin: (.5 * $base-line-height) 0;
-  li {
-    padding: .5 * $base-line-height;
-    float: left;
+  ul {
+    list-style-type: none; 
+    padding-left: 0;
   }
+  li {
+    float: left;
+    margin-right: 10px; 
+  }
+  .active { font-weight: bold; }
 }
 
+.item-pagination {
+  list-style-type: none;
+  padding-left: 0;
+  
+  a { @include button; }
+}
+
+.sort-label { display: none; }
+
 #sort-links-list {
+  @include adjust-font-size-to(14px);
   display: inline-block;
-  margin-left: 10px;
+  margin: (.5 * $base-line-height) 0;
+  vertical-align: bottom;
+  list-style-type: none;
+  padding-left: 0;
 
   li {
     display: inline-block;
+    margin-right: 10px;
+    padding-right: 10px;
+    border-right: 1px solid $border-highlight;
+
+    &:last-of-type { border-right: 0; }
     
-    &:after {
-      content: "\2022";
-      display: inline-block;
-      margin: 0 5px;
+    &.sorting { font-weight: bold; }
+    
+    &.sorting a:after {
+      font-family: "entypo";
+      margin-left: 3px;
+      line-height: 100%;
     }
     
-    &:last-of-type:after { 
-      content: ""; 
-      margin: 0;
-    }
+    &.asc a:after { content: "\e008"; }
+
+    &.desc a:after { content: "\e007"; }
   } 
+}
+
+.hTagcloud ul {
+  list-style-type: none;
+  padding: rhythm(.5) 0 0 0;
+  overflow: auto;
+  clear: both;
+  
+  li {
+    margin: 0 rhythm(.5) rhythm(.5) 0;
+    float: left;
+    
+    a { 
+      padding: rhythm(.25) rhythm(.5); 
+      background: url('../images/bg.png') #b30000;
+      overflow: auto;
+      float: left;
+      @include border-radius(3px);
+    }
+    
+    a:link, a:visited { 
+      color: #fff; 
+    }
+  }
 }
 
 #collection-items .item {
@@ -463,9 +660,59 @@ a#advanced-search-link {
     @include trailer(1.5);
 }
 
+#itemfiles {
+  overflow: auto;
+  img {
+    float: left;
+    margin-right: rhythm(1);
+    @include trailer(.5);
+  }
+}
+
+#advanced-search-form {
+  overflow: auto;
+  clear: both;
+}
+
+#search-filters ul {
+  list-style-type: none;
+  padding-left: 0;
+  overflow: auto;
+  li { 
+    background-color: #dfdfdf; 
+    @include border-radius(3px);
+    float: left; 
+    padding: 0 5px;
+    margin: 0 rhythm(.5) rhythm(.5) 0;
+    ul {
+      display: inline;
+      li {
+        margin: 0;
+        padding: 0;
+        float: none;
+        display: inline;
+        &:after {
+          content: ", ";
+        }
+        &:last-child:after {
+          content: "";
+        }
+      }
+    }
+  }
+}
+
+.exhibits .pagination:empty { 
+  margin: 0 0 rhythm(1);
+  padding: 0;
+  float: left;
+}
+
+.exhibit { clear: both; }
+
 footer nav { display: none; }
 
 footer[role=contentinfo] {
-  padding:rhythm(1.25);
   @include adjust-font-size-to(14px);
+  padding: $base-line-height;
 }
