@@ -20,7 +20,8 @@
     
 <script type="text/javascript">
 jQuery(document).ready( function() {
-    Omeka.mobileNav();
+    Bucket.mobileNav();
+    Bucket.showAdvancedForm();
 });
 </script>
 

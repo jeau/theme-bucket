@@ -6,12 +6,12 @@
 }
 
 // 480px ---------------------------------------------------------------------
-@media screen and (min-width: 480px) {
+@media screen and (min-width: 540px) {
   @import "media/screen_480";
 }
 
 // 768px  --------------------------------------------------------------------
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 800px) {
   @import "media/screen_768";
 }
 

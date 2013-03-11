@@ -1,0 +1,8 @@
+header {
+  width: columns(2) + gutter();
+}
+
+div[role=main], footer {
+  width: columns(6);
+  left: columns(2) + gutter();
+}

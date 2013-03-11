@@ -20,6 +20,23 @@ form {
   }
 }
 
+input[type=radio] {
+    float: left;
+    line-height: 24px;
+    display: inline;
+    padding: 0;
+    height: 24px;
+    margin: 0 rhythm() 0 0;
+}
+input[type=checkbox] {
+    margin: 0 rhythm() 0 0;
+    display: inline-block;
+    padding: 0;
+    height: 24px;
+    float: left;
+    clear: both; 
+}
+
 label, .label {
   display: inline-block;
   @include trailer(.5);
@@ -228,69 +245,13 @@ header {
   font-size: 1.5 * $base-font-size; 
   line-height: $base-line-height;
   font-weight: normal;
-  padding: $base-line-height;
+  padding: rhythm(1) 0;
   text-align: center;
   a { 
       color: #f8f8f8; 
       display: inline-block;
       width: 100%;
   }
-}
-
-#search-container {
-  display: block;
-  width: 100%;
-  overflow: auto;
-  text-align: center;
-  padding: 0 rhythm(1) rhythm(.75) rhythm(1);
-  border-color: $border-shadow;
-  @include leading-border(1px, .75, $base-font-size, solid);
-  
-  input {
-    @include border-radius(0px);
-    -webkit-appearance: none;
-  }
-  
-  input[type=text] {
-    border: 0;
-    font-size: $base-font-size;
-    line-height: $base-line-height;
-    display: inline-block;
-    padding: rhythm(.25);
-    height: rhythm(1.5);
-    float: left;
-    width: 65%;
-    margin: 0;
-    vertical-align: top;
-    @include border-radius(3px 0px 0px 3px);
-  }
-  
-  input[type=submit] {
-    padding: rhythm(.25);
-    line-height: $base-line-height;
-    border: 0;
-    font-size: 1em;
-    float: left;
-    width: 35%;
-    background-color: $yellow;
-    margin: 0;
-    vertical-align: top;
-    @include border-radius(0px 3px 3px 0px);
-  }
-}
-
-a#advanced-search-link {
-  width: 10%;
-  height: 30px;
-  background-color: rgba(0,0,0,.2);
-  border-radius: 2px;
-  color: #f8f8f8;
-  font-size: 16px;
-  text-indent: -9999px;
-  display: inline-block;
-  float: left;
-  line-height: 30px;
-  padding: 0;
 }
 
 #top-nav {
@@ -334,7 +295,12 @@ a#advanced-search-link {
       [data-icon] { left: 7px;}
   }
   
-  #menu-container { clear: both; }
+  #menu-container { 
+    clear: both; 
+    @include padding-trailer(.25);
+    border-color: $border-shadow;
+    @include leading-border(1px, .25, $base-font-size, solid);
+  }
 
   #menu-container > ul { 
     clear: both;
@@ -358,12 +324,6 @@ a#advanced-search-link {
     }
   } 
   
-  .navigation > li:first-of-type > a {
-    padding-top: 0;
-    border-color: $border-shadow;
-    @include leading-border(1px, .5, $base-font-size, solid);
-  }
-   
   li {
     padding: 0;
     
@@ -381,7 +341,82 @@ a#advanced-search-link {
   }
 }
 
-#home #intro {
+#search-container {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  text-align: center;
+  padding: 0 rhythm(1) rhythm(1) rhythm(1);
+  border-color: $border-shadow;
+  @include leading-border(1px, 1, $base-font-size, solid);
+  
+  input[type=text], input[type=submit] {
+    @include border-radius(0px);
+    -webkit-appearance: none;
+  }
+  
+  label { 
+    display: block; 
+    clear: both;
+    margin-bottom: 0;
+  }
+  
+  input[type=text] {
+    border: 0;
+    font-size: $base-font-size;
+    line-height: $base-line-height;
+    display: inline-block;
+    padding: rhythm(.25);
+    height: rhythm(1.5);
+    float: left;
+    width: 65%;
+    margin: 0;
+    vertical-align: top;
+    @include border-radius(3px 0px 0px 3px);
+  }
+  
+  input[type=submit] {
+    padding: rhythm(.25);
+    line-height: $base-line-height;
+    border: 0;
+    font-size: 1em;
+    float: left;
+    width: 35%;
+    background-color: $yellow;
+    margin: 0;
+    vertical-align: top;
+    @include border-radius(0px 3px 3px 0px);
+  }
+}
+
+#query-types, #record-types { @include trailer(); }
+
+#record-types label { 
+  @include trailer(); 
+  &:last-child { @include trailer(0); }
+}
+
+a#advanced-search {
+  width: 100%;
+  clear: both;
+  color: $link-color;
+  padding: rhythm(.25);
+  display: inline-block;
+  margin: rhythm(.5) 0 0 0;
+  @include border-radius(3px);
+}
+
+#advanced-form {
+  text-align: left;
+  color: #fff;
+  @include leader();
+  
+  a { color: $link-color; }
+  
+  & > *:last-child { margin-bottom: 0; }
+}
+
+#intro {
   text-align: center;
   margin: 0;
   padding: 0 0 rhythm(1) 0;
@@ -525,7 +560,7 @@ a#advanced-search-link {
   h2 {
     @include adjust-font-size-to(18px);
     line-height: $base-line-height;
-    margin: 0 0 (.5 * $base-line-height) 0;
+    margin: 0 0 $base-line-height 0;
   }
   
   .item {

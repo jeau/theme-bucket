@@ -49,7 +49,7 @@
               <span class="screen-reader-text">Menu</span>
             </a>            
             <div id="search-container">
-            <?php echo search_form(); ?>
+            <?php echo search_form(array('show_advanced' => true)); ?>
             </div>
             <div id="menu-container">
             <?php echo public_nav_main(); ?>

@@ -1,0 +1,68 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+body { background: #2d2d2d; }
+
+header { 
+  width: columns(3) + gutter(); 
+  margin-right: 0;
+  padding: 0 gutter();
+  background: transparent;
+  display: inline-block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  max-height: 100%;
+}
+
+div[role=main], footer {
+  width: columns(5);
+  background: url('../images/content-bg.png') #eee;
+  display: inline-block;
+  float: right;
+}
+
+div[role=main] { 
+  padding-bottom: rhythm(5);
+  min-height: 90%;
+}
+
+footer {
+  min-height: 10%;
+  p:last-child { margin-bottom: 0; }
+}
+
+#site-title {
+  text-align: left;
+  padding-right: 0;
+}
+
+#top-nav > a { 
+  float: none; 
+  padding-left: 0;
+  margin-left: 0;
+}
+
+#top-nav .icon-search { margin-right: 0; }
+
+#top-nav .icon-search, 
+#top-nav .icon-menu { display: none; }
+
+#top-nav #menu-container, #search-container { 
+  display: block !important; 
+  padding-left: 0;
+  padding-right: 0;
+  @include leading-border(0px, 0, $base-font-size, solid);
+}
+
+#intro { 
+  font-size: 24px;
+  line-height: 1.5 * $base-line-height;
+  text-align: left; 
+  padding-bottom: $base-line-height;
+}
+
+#top-nav li a, #top-nav #menu-container > ul ul a { padding-left: 0; }
