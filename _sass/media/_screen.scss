@@ -295,6 +295,8 @@ header {
       [data-icon] { left: 7px;}
   }
   
+  #search-container, #menu-container { display: none; }
+  
   #menu-container { 
     clear: both; 
     @include padding-trailer(.25);
@@ -350,29 +352,10 @@ header {
   border-color: $border-shadow;
   @include leading-border(1px, 1, $base-font-size, solid);
   
-  input[type=text], input[type=submit] {
-    @include border-radius(0px);
-    -webkit-appearance: none;
-  }
-  
   label { 
     display: block; 
     clear: both;
     margin-bottom: 0;
-  }
-  
-  input[type=text] {
-    border: 0;
-    font-size: $base-font-size;
-    line-height: $base-line-height;
-    display: inline-block;
-    padding: rhythm(.25);
-    height: rhythm(1.5);
-    float: left;
-    width: 65%;
-    margin: 0;
-    vertical-align: top;
-    @include border-radius(3px 0px 0px 3px);
   }
   
   input[type=submit] {
@@ -387,6 +370,20 @@ header {
     vertical-align: top;
     @include border-radius(0px 3px 3px 0px);
   }
+}
+
+#query {
+  border: 0;
+  font-size: $base-font-size;
+  line-height: $base-line-height;
+  display: inline-block;
+  padding: rhythm(.25);
+  height: rhythm(1.5);
+  float: left;
+  width: 65%;
+  margin: 0;
+  vertical-align: top;
+  @include border-radius(3px 0px 0px 3px);
 }
 
 #query-types, #record-types { @include trailer(); }

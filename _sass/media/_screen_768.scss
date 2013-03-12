@@ -1,8 +1,80 @@
-header {
-  width: columns(2) + gutter();
+body { @include container(); }
+
+#site-title { 
+  text-align: left;
+  padding: rhythm(1) rhythm(2/3);
 }
 
-div[role=main], footer {
-  width: columns(6);
-  left: columns(2) + gutter();
+header { overflow: visible; }
+
+div[role=main] { background: rgba(255,255,255,.35); }
+
+#search-container {
+  text-align: left;
+}
+
+#query { width: 50%; }
+
+#search-container input[type=submit] { 
+  width: 15%; 
+  margin-right: 2%;
+}
+
+a#advanced-search { 
+  width: 33%; 
+  margin-top: 0;
+}
+
+#query-types, #record-types {
+  float: left;
+  width: 50%;
+  padding-right: 2%;
+}
+
+#top-nav { 
+  position: relative; 
+  min-height: 2 * $base-line-height;
+  overflow: visible;
+}
+
+#top-nav .icon-menu { display: none; }
+
+#top-nav #menu-container { 
+  border-top: 0;
+  display: block !important;
+  float: left;
+  clear: none;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: visible !important;
+}
+
+#top-nav #menu-container .navigation > li {
+    float: left;
+}
+
+
+#top-nav #menu-container .navigation li:hover > ul { display: block; }
+
+#top-nav #menu-container .navigation li > ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    padding: 0;
+    background-color: #2d2d2d;
+}
+
+#top-nav #menu-container .navigation li > ul ul {
+    left: 100%;
+    top: 0;
+    width: 100%;
+}
+
+#top-nav #menu-container .navigation li a {
+    @include adjust-font-size-to(14px);
+    line-height: 26px;
+    padding-right: 1em;
 }

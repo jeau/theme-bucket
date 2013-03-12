@@ -5,8 +5,6 @@ if (!Bucket) {
 (function ($) {
   
     Bucket.mobileNav = function() {
-        $('#search-container').hide();
-        $('#menu-container').hide();
         $('#top-nav > a').each( function() {
             $(this).click( function(e) {
                 e.preventDefault();
